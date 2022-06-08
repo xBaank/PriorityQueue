@@ -37,8 +37,8 @@ internal class PriorityQueueTest {
 
     @Test
     fun addAll() {
-        var proceso4 = Proceso(4, "a", 4)
-        var proceso5 = Proceso(5, "a", 4)
+        val proceso4 = Proceso(4, "a", 4)
+        val proceso5 = Proceso(5, "a", 4)
         Assertions.assertTrue(queue.addAll(listOf(proceso4, proceso5)))
         Assertions.assertFalse(queue.addAll(listOf(proceso, proceso2)))
     }
@@ -53,6 +53,15 @@ internal class PriorityQueueTest {
     fun remove() {
         Assertions.assertTrue(queue.remove(proceso))
         Assertions.assertFalse(queue.remove(proceso))
+    }
+
+    @Test
+    fun removePoll() {
+        Assertions.assertSame(queue.remove(), proceso)
+        queue.clear()
+        Assertions.assertThrows(Exception::class.java) {
+            queue.remove()
+        }
     }
 
     @Test

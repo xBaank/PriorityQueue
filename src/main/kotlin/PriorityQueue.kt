@@ -1,10 +1,7 @@
 import java.util.*
 
-class PriorityQueue<T>(collection: Collection<T>, comparator: Comparator<T>? = null) : Queue<T> {
+class PriorityQueue<T>(collection: Collection<T> = emptyList(), comparator: Comparator<T>? = null) : Queue<T> {
     private val queue: SortedSet<T>
-
-    constructor() : this(TreeSet())
-
 
     init {
         if (comparator != null) {
@@ -14,24 +11,13 @@ class PriorityQueue<T>(collection: Collection<T>, comparator: Comparator<T>? = n
             queue = TreeSet(collection)
     }
 
-    override fun add(element: T): Boolean {
-        return queue.add(element)
-    }
+    override fun add(element: T): Boolean = queue.add(element)
 
-    override fun addAll(elements: Collection<T>): Boolean {
-        for (element in elements) {
-            if (!add(element)) return false
-        }
-        return true
-    }
+    override fun addAll(elements: Collection<T>): Boolean = queue.addAll(elements)
 
-    override fun clear() {
-        queue.clear()
-    }
+    override fun clear() = queue.clear()
 
-    override fun iterator(): MutableIterator<T> {
-        return queue.iterator()
-    }
+    override fun iterator(): MutableIterator<T> = queue.iterator()
 
     override fun remove(): T {
         val item = queue.firstOrNull() ?: throw Exception("Queue is empty")
@@ -39,19 +25,13 @@ class PriorityQueue<T>(collection: Collection<T>, comparator: Comparator<T>? = n
         return item
     }
 
-    override fun retainAll(elements: Collection<T>): Boolean {
-        return queue.retainAll(elements.toSet())
-    }
+    override fun retainAll(elements: Collection<T>): Boolean = queue.retainAll(elements.toSet())
 
-    override fun removeAll(elements: Collection<T>): Boolean {
-        return queue.removeAll(elements.toSet())
-    }
+    override fun removeAll(elements: Collection<T>): Boolean = queue.removeAll(elements.toSet())
 
-    override fun remove(element: T): Boolean {
-        return queue.remove(element)
-    }
+    override fun remove(element: T): Boolean = queue.remove(element)
 
-    override fun isEmpty(): Boolean = size == 0
+    override fun isEmpty(): Boolean = queue.isEmpty()
 
     override fun poll(): T? {
         val item = queue.firstOrNull()
@@ -60,25 +40,15 @@ class PriorityQueue<T>(collection: Collection<T>, comparator: Comparator<T>? = n
 
     }
 
-    override fun element(): T {
-        return queue.firstOrNull() ?: throw Exception("Queue is empty")
-    }
+    override fun element(): T = queue.firstOrNull() ?: throw Exception("Queue is empty")
 
-    override fun peek(): T? {
-        return queue.firstOrNull()
-    }
+    override fun peek(): T? = queue.firstOrNull()
 
-    override fun offer(e: T): Boolean {
-        return queue.add(e)
-    }
+    override fun offer(e: T): Boolean = queue.add(e)
 
-    override fun containsAll(elements: Collection<T>): Boolean {
-        return queue.containsAll(elements.toSet())
-    }
+    override fun containsAll(elements: Collection<T>): Boolean = queue.containsAll(elements.toSet())
 
-    override fun contains(element: T): Boolean {
-        return queue.contains(element)
-    }
+    override fun contains(element: T): Boolean = queue.contains(element)
 
     override val size: Int
         get() = queue.size
