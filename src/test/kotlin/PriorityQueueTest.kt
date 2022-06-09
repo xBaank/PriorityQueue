@@ -6,11 +6,11 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class PriorityQueueTest {
 
-    private lateinit var queue: PriorityQueue<Proceso>
+    private lateinit var queue: ProcesoPriorityQueue
 
     @BeforeEach
     fun setUp() {
-        queue = PriorityQueue(listOf(proceso2, proceso, proceso3))
+        queue = ProcesoPriorityQueue(listOf(proceso2, proceso, proceso3))
     }
 
 
