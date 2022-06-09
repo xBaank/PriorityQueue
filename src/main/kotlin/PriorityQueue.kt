@@ -1,7 +1,7 @@
 import java.util.*
 
 class PriorityQueue<T>(collection: Collection<T> = emptyList(), comparator: Comparator<T>? = null) : Queue<T> {
-    private val queue: AbstractSet<T>
+    private val queue: SortedSet<T>
 
     init {
         if (comparator != null) {
