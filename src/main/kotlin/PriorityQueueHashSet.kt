@@ -1,14 +1,10 @@
 import java.util.*
 
-class PriorityQueue<T>(collection: Collection<T> = emptyList(), comparator: Comparator<T>? = null) : Queue<T> {
+class PriorityQueueHashSet<T>(collection: Collection<T> = emptyList()) : Queue<T> {
     private val queue: AbstractSet<T>
 
     init {
-        if (comparator != null) {
-            queue = TreeSet(comparator)
-            queue.addAll(collection)
-        } else
-            queue = TreeSet(collection)
+        queue = HashSet(collection)
     }
 
     override fun add(element: T): Boolean = queue.add(element)
